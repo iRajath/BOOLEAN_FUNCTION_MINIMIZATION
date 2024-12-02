@@ -38,34 +38,45 @@ Hardware – PCs, Cyclone II , USB flasher
 Developed by: RegisterNumber: 24900186*/
 
 ```
-module booleanfun (A, B, C, D, W, X, Y, Z, F1,F2);
-input A, B, C, D, W, X, Y,Z;
-output F1, F2;
-wire x1, x2,x3,x4, x5,x6,x7,x8,x9, x10;
-assign x1=(~A) & (~B) & (~C) & (~D);
-assign x2=(A) & (C) & (~D);
+module exp2(A,B,C,D,W, X, Y, Z, F1, F2);
+input A, B, C, D;
+output F1;
+wire x1, x2,x3,x4,x5;
+assign x1=(~A) & (~B) & (C) & (~D);
+assign x2=(~A) & (C) & (~D);
 assign x3=(~B) & (C) & (~D);
-assign x4= (~A) & (B) & (C) & (D);
-assign x5=(B) & (C) & (D);
-assign x6=(X) & (~Y) & (Z)
-assign x7=(~X) & (~Y) &(Z);
-assign x8=(~W) & (X) & (Y);
-assign x9=(W) & (~X) & (Y);
-assign x10=(W) & (X) & (Y);
+assign x4= (~A) & (~B) & (C) & (~D);
+assign x5=(~B) & (C) & (~D);
 assign F1=x1|x2|x3|x4|x5;
-assign F2=x6|x7|x8|x9|x10;
+input W,X,Y,Z;
+output F2;
+wire a1,a2, a3,a4,a5;
+assign a1=(~W) & (~X) & (~Y) & (~Z);
+assign a2=(~W) & (~Y) & (~Z);
+assign a3=(~X) & (~Y) &(~Z);
+assign a4=(~W) & (~X) & (~Y)&(~Z);
+assign a5=(~X) & (~Y) & (~Z);
+assign F2=a1|a2|a3|a4|a5;
 endmodule
 ```
 
 **RTL realization**
 
+![image](https://github.com/user-attachments/assets/81defa7e-378a-40cc-a42d-5e3f517f938e)
 
+**True Table**
 
-**Output:**
+![image](https://github.com/user-attachments/assets/4a3070bd-f3ab-4857-ac4a-37e87ba798f8)
+
+![image](https://github.com/user-attachments/assets/bc31d0f4-f954-495e-81ac-5fdc222c8f39)
+
 
 **RTL**
 
 **Timing Diagram**
+
+![image](https://github.com/user-attachments/assets/b9cd6b76-a682-4673-91c9-61f6b4a44af4)
+
 
 **Result:**
 
